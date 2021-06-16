@@ -1,160 +1,207 @@
-# Module 1 Final Project
+# 21st Century Movie Trend Analysis
 
-## Introduction
+**Author**: [Dylan Dey](mailto:ddey2985@gmail.com)
 
-In this lesson, we'll review all of the guidelines and specifications for the final project for Module 1.
+## Overview
 
-## Objectives
+This notebook imports the processed data from the Data Exploration notebook in order to analyze current movie trends on behalf of Microsoft's new movie studio. By putting an emphasis on the median ROI% value of movie data from a number of movie database websites, as well as by creating a list of the most popular movies, evaluation of financial performance and the risk involved was evaluted and recommendations based on these findings were made. A focus on large budget movies with particular genre elements released at the appropriate time of the year will ensure the best chance of success at the box office for Microsoft.
 
-You will be able to:
+## Business Problem
+This project covers the following hypothetical:
+Microsoft wants to create a new movie studio and decided to hire me to conduct data analysis to determine what films are currently performing the best at the box office. Using multiple datasets from a number of movie databases, expected returns and risk as well as expected cost and how to best utilize recourses can be determined through anaylsis. As the newcomer to a crowded realm, further analysis was conducted to ensure a well recieved debut movie and to set the standard for the quality of it's future films.
 
-* Describe all required aspects of the final project for Module 1
-* Describe all required deliverables
-* Describe what constitutes a successful project
-* Describe what the experience of the project review should be like
+## Data
 
-## Final Project Summary
+[The Numbers](https://www.the-numbers.com/) <br>
+[Box Office Mojo](https://www.boxofficemojo.com/) <br>
+[IMDb](https://www.imdb.com/) <br>
+[Rotten Tomatoes](https://www.rottentomatoes.com/) <br>
+[The Movie Database](https://www.themoviedb.org/)
 
-You've made it all the way through the first module of this course - take a minute to celebrate your awesomeness!
+The Numbers and Box Office Mojo websites provided all of the financial information (budgets and revenue) needed for analysis. IMDb provids a large amount of data for writers, directors, genres, and general information for a large sum of movies. Rotten Tomatoes provides a unqiue value in terms of critical review from trained professionals. The Movie Database provides an alternative to the information available from IMDb. 
 
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-mod-1-project-v2-1/master/awesome.gif)
-
-All that remains in Module 1 is to put our newfound data science skills to use with a final project! You should expect this project to take between 20 and 25 hours of solid, focused effort. If you're done way quicker, go back and dig in deeper or try some of the optional "level up" suggestions. If you're worried that you're going to get to 30 hrs and still not even have the data imported, reach out to an instructor in Slack ASAP to get some help!
-
-## The Project
-
-Microsoft sees all the big companies creating original video content, and they want to get in on the fun. They have decided to create a new movie studio, but the problem is they don’t know anything about creating movies. They have hired you to help them better understand the movie industry.
-Your team is charged with doing data analysis and creating a presentation that explores what type of films are currently doing the best at the box office. You must then translate those findings into actionable insights that the CEO can use when deciding what type of films they should be creating.
-
-# The Dataset
-
-You may scrape or make API calls to get additional data, but included in the repository (in the folder `zippedData`) is some movie-related data from:
-* Box Office Mojo
-* IMDB
-* Rotten Tomatoes
-* TheMovieDB.org
-
-# The Deliverables
-
-For online students, there will be five deliverables for this project (Note: On-campus students may have different requirements, please speak with your instructor):
-
-1. A well documented **Jupyter Notebook** containing any code you've written for this project and comments explaining it. This work will need to be pushed to your GitHub repository in order to submit your project.  
-2. An organized **README.md** file in the GitHub repository that describes the contents of the repository. This file should be the source of information for navigating through the repository.
-3. A short **Keynote/PowerPoint/Google Slides presentation** (delivered as a PDF export) giving a high-level overview of your methodology and recommendations for non-technical stakeholders. Make sure to also add and commit this pdf of your non-technical presentation to your repository with a file name of presentation.pdf.
-4. **[A Blog Post](https://github.com/learn-co-curriculum/dsc-welcome-blogging-v2-1)**
-5. A **Video Walkthrough** of your non-technical presentation. Some common video recording tools used are Zoom, Quicktime, and Nimbus. After you record your presentation, publish it on a service like YouTube or Google Drive, you will need a link to the video to submit your project.
-
-Note: On-campus students may have different requirements, please speak with your instructor.
-
-### Jupyter Notebook Must-Haves
-
-For this project, your Jupyter Notebook should meet the following specifications:
-
-#### Organization/Code Cleanliness
-
-* The notebook should be well organized, easy to follow,  and code should be commented where appropriate.  
-    * Level Up: The notebook contains well-formatted, professional looking markdown cells explaining any substantial code.  All functions have docstrings that act as professional-quality documentation
-* The notebook is written for technical audiences with a way to both understand your approach and reproduce your results. The target audience for this deliverable is other data scientists looking to validate your findings.
-
-#### Visualizations & EDA
-
-* Your project contains at least 4 meaningful data visualizations, with corresponding interpretations. All visualizations are well labeled with axes labels, a title, and a legend (when appropriate)  
-* You pose at least 3 meaningful questions and answer them through EDA.  These questions should be well labeled and easy to identify inside the notebook.
-    * **Level Up**: Each question is clearly answered with a visualization that makes the answer easy to understand.   
-* Your notebook should contain 1 - 2 paragraphs briefly explaining your approach to this project.
+### Box Office Mojo Dataset 
 
 
-### Non-Technical Presentation Must-Haves
+This dataset contains box-office revenue (both domestic and foreign) and the year the movie was released by title and studio. The movies were released between the years 2010 and 2018 and the set contains thousands of entries.
 
-Another deliverable should be a Keynote, PowerPoint or Google Slides presentation delivered as a pdf file in your fork of this repository with the file name of `presentation.pdf` detailing the results of your project.  Your target audience is non-technical people interested in using your findings to make decisions for creating movies.
 
-Your presentation should:
+The dataset contains the following fields:
 
-* Contain between 5 - 10 professional-quality slides.  
-    * **Level Up**: The slides should use visualizations whenever possible, and avoid walls of text.
-* Take no more than 5 minutes to present.   
-* Avoid technical jargon and explain the results in a clear, actionable way for non-technical audiences.   
+**title:** Full title of the film. <br>
+**studio:** Abbreviation of the film studio that produced the film. <br>
+**domestic-gross:** The gross box-office revenue from North America (U.S., Canada, and Puerto Rico). <br>
+**foreign_gross:** "The gross box-office revenue for the rest of the World. <br>
+**year:** Year of film release.
 
-### Blog Post Must-Haves
-
-Refer back to the [Blogging Guidelines](https://github.com/learn-co-curriculum/dsc-welcome-blogging-v2-1) for the technical requirements and blog ideas.
+### IMBd Dataset Initial Exploration
 
 
 
-## The Process
-(Note: On-campus students may have different processes, please speak with your instructor)
+*imdb.name.basics.csv.gz*     
 
-### 1. Getting Started
+**nconst:** Unique identifier for names(of people, not movie titles)  <br>
+**primary_name:** Full Name of person in movie industry <br> 
+**birth_year:** year film industry person was born <br>
+**death_year:** year of death <br>
+**primary_profession:** Primary profession in the film industry <br>
+**known_for_titles:** string of comma seperated *tconst* (unique title id of films for IMBd)<br>
 
-Please start by reviewing this document. If you have any questions, please ask them in Slack ASAP so (a) we can answer the questions and (b) so we can update this repository to make it clearer.
+ 
+*imdb.title.basics.csv.gz* 
 
-Be sure to let the instructor team know when you’ve started working on a project, either by reaching out over Slack or, if you are in a full-time or part-time cohort, by connecting with your Cohort Lead in your weekly 1:1. If you’re not sure who to reach out to, post in the #online-ds-sp-000 channel in Slack.
-
-Once you're done with the 10 sections in module 1, please start on the project. Do that by forking this repository, cloning it locally, and working in the `student.ipynb` file. Make sure to also add and commit a pdf of your presentation to the repository with a file name of `presentation.pdf`.
-
-### 2. The Project Review
-
-_Note: On-campus students may have different review processes, please speak with your instructor._
-
-> **When you start on the project, please also reach out to an instructor immediately to schedule your project review** (if you're not sure who to schedule with, please ask in Slack!)
-
-#### What to expect from the Project Review
-
-Project reviews are focused on preparing you for technical interviews. Treat project reviews as if they were technical interviews, in both attitude and technical presentation *(sometimes technical interviews will feel arbitrary or unfair - if you want to get the job, commenting on that is seldom a good choice)*.
-
-The project review is comprised of a 45 minute 1:1 session with one of the instructors. During your project review, be prepared to:
-
-#### 1. Deliver your PDF presentation to a non-technical stakeholder.
-In this phase of the review (~10 mins) your instructor will play the part of a non-technical stakeholder that you are presenting your findings to. The presentation  should not exceed 5 minutes, giving the "stakeholder" 5 minutes to ask questions.
-
-In the first half of the presentation (2-3 mins), you should summarize your methodology in a way that will be comprehensible to someone with no background in data science and that will increase their confidence in you and your findings. In the second half (the remaining 2-3 mins) you should summarize your findings and be ready to answer a couple of non-technical questions from the audience. The questions might relate to technical topics (sampling bias, confidence, etc) but will be asked in a non-technical way and need to be answered in a way that does not assume a background in statistics or machine learning. You can assume a smart, business stakeholder, with a non-quantitative college degree.
-
-#### 2. Go through the Jupyter Notebook, answering questions about how you made certain decisions. Be ready to explain things like:
-    * "How did you pick the question(s) that you did?"
-    * "Why are these questions important from a business perspective?"
-    * "How did you decide on the data cleaning options you performed?"
-    * "Why did you choose a given method or library?"
-    * "Why did you select those visualizations and what did you learn from each of them?"
-    * "Why did you pick those features as predictors?"
-    * "How would you interpret the results?"
-    * "How confident are you in the predictive quality of the results?"
-    * "What are some of the things that could cause the results to be wrong?"
-
-Think of the first phase of the review (~30 mins) as a technical boss reviewing your work and asking questions about it before green-lighting you to present to the business team. You should practice using the appropriate technical vocabulary to explain yourself. Don't be surprised if the instructor jumps around or sometimes cuts you off - there is a lot of ground to cover, so that may happen.
-
-If any requirements are missing or if significant gaps in understanding are uncovered, be prepared to do one or all of the following:
-* Perform additional data cleanup, visualization, feature selection, modeling and/or model validation
-* Submit an improved version
-* Meet again for another Project Review
-
-What won't happen:
-* You won't be yelled at, belittled, or scolded
-* You won't be put on the spot without support
-* There's nothing you can do to instantly fail or blow it
-
-**Please note: We need to receive the URL of your repository at least 24 hours before and please have the project finished at least 3 hours before your review so we can look at your materials in advance.**
+**tconst:** Unique identifier for IMBd movie titles  <br>
+**primary_title:** working title of movie <br> 
+**original_title:** original title for movie release (untranslated) <br>
+**start_year:** year of movie release <br>
+**runtime_minutes:** float value of film length <br>
+**genres:** string of comma seperated genre values<br>
 
 
-## Submitting your Project
 
- You’re almost done! In order to submit your project for review, include the following links to your work in the corresponding fields on the right-hand side of Learn.
+*imdb.title.akas.csv.gz*   
 
- 1. **GitHub Repo:** Now that you’ve completed your project in Jupyter Notebooks, push your work to GitHub and paste that link to the right. (If you need help doing so, review the resources [here](https://docs.google.com/spreadsheets/d/1CNGDhjcQZDRx2sWByd2v-mgUOjy13Cd_hQYVXPuzEDE/edit#gid=0).)
-_Reminder: Make sure to also add and commit a pdf of your non-technical presentation to the repository with a file name of presentation.pdf._
-2. **Blog Post:** Include a link to your blog post.
-3. **Record Walkthrough:** Include a link to your video walkthrough.
-
- Hit "I'm done" to wrap it up. You will receive an email in order to schedule your review with your instructor.
-
-## Grading Rubric
-
-Online students can find a PDF of the grading rubric for the project [here](https://github.com/learn-co-curriculum/dsc-mod-1-project-v2-1/blob/master/module1_project_rubric.pdf). On-campus students may have different review processes, please speak with your instructor.
+**tconst:** Unique identifier for IMBd movie titles  <br>
+**ordering:** indexes to go with each set of tconst <br> 
+**title:** alt title specific to region <br>
+**region:** region of particular title <br>
+**language:** language of film (alot of missing data) <br>
+**attributes:** descrpition of particular title (3D version, fake, etc)<br>
+**is_original_title:** boolean check for OG title (0.0 false, 1.0 true)<br>
 
 
-## Summary
+imdb.title.crew.csv.gz    
 
-The end of module projects and project reviews are a critical part of the program. They give you a chance to both bring together all the skills you've learned into realistic projects and to practice key "business judgement" and communication skills that you otherwise might not get as much practice with.
+**tconst:** Unique identifier for IMBd movie titles  <br>
+**directors:** comma seperated string of *nconst* for directors <br> 
+**writers:** comma seperated string of *nconst* for writers<br>
 
-The projects are serious and important. They are not graded, but they can be passed and they can be failed. Take the project seriously, put the time in, ask for help from your peers or instructors early and often if you need it, and treat the review as a job interview and you'll do great. We're rooting for you to succeed and we're only going to ask you to take a review again if we believe that you need to. We'll also provide open and honest feedback so you can improve as quickly and efficiently as possible.
 
-Finally, this is your first project. We don't expect you to remember all of the terms or to get all of the answers right. If in doubt, be honest. If you don't know something, say so. If you can't remember it, just say so. It's very unusual for someone to complete a project review without being asked a question they're unsure of, we know you might be nervous which may affect your performance. Just be as honest, precise and focused as you can be, and you'll do great!
+
+*imdb.title.principals.csv.gz*   
+
+**tconst:** Unique identifier for IMBd movie titles  <br>
+**ordering:** indexes to go with each set of tconst <br> 
+**nconst:** Unique identifier for names(of people, not movie titles) <br>
+**category** job category (actor, director, writer, etc) <br>
+**job:** role of particular nconst (person) <br>
+**characters:** list of characters played by nconst for tconst <br>
+
+
+*imdb.title.ratings.csv.gz*
+
+**tconst:** Unique identifier for IMBd movie titles  <br>
+**averagerating:** 1-10 IMBd movie score weighted average (see link below for detailed explanation of IMBd ratings) <br> 
+**numvotes:** number of votes by registered users to calculate the IMBd score <br>
+
+[IMDb weighted average for ratings](https://help.imdb.com/article/imdb/track-movies-tv/weighted-average-ratings/GWT2DSBYVT2F25SK?ref_=helpart_nav_8#)
+
+
+
+
+### The Movie Database Initial Exploration
+
+The Movie Database is an open alternative to IMDb with an easily accesible API. It is not as old as IMBd and therefore is less complete/established. 
+
+
+**genre_ids:** list of Unique identifiers for TMDb genres <br>
+**id:** unique id of movie title <br> 
+**original_language:** abbrevated original language <br>
+**original_title** string of original title <br>
+**popularity:** score using various parameters to measure current popularity of title (see below for more info) <br>
+**release_date:** date of movie release <br>
+**title** working title of movie displayed on TMDb <br>
+**vote_average:** average score 1-10 based on user votes <br>
+**vote_count:** total number of votes for title rating <br>
+
+[TMDb Popularity Explained](https://developers.themoviedb.org/3/getting-started/popularity)
+
+### Rotten Tomatoes Dataset  Initial Exploration
+
+*rt.movie_info.tsv.gz*
+
+**id:** unique identifiers for RT titles <br> 
+**synopsis:** summary of movie plot <br> 
+**rating:** Motion Picture Association film rating system rating (R, PG, etc) <br>
+**genre** list of genres <br>
+**director:** string of directors <br>
+**writer:** string of writers <br>
+**theater_date** date movie hit theaters <br>
+**dvd_release:** date movie available on DVD <br>
+**currency:** currency of box_office revenue <br>
+**box_office** gross domestic box office revenue  <br>
+**runtime:** total runtime of film in minutes <br>
+
+*rt.reviews.tsv.gz*
+
+**id:** unqie title identifier, primary key <br>
+**review:** crtic review (paragraph of text) <br> 
+**fresh:** fresh or rotten (good or bad) score by critic <br>
+**critic** name of critic  <br>
+**top_critic:** booleon to check if critic is top critic for title <br>
+**publisher:** publishing company critic works for <br>
+**date:** date crtic published review <br>
+
+
+
+*The data is described and explored in much more detail in the accompanying jupyter notebooks.*
+
+
+<img src="images/Schema.png">
+
+## Methods
+
+This project focuses on creating appropriate visualizations in order to quickly identify important trends for financial success of movies as well as approval from the public. An ROI% feature was engineered to gain financial insight, whereas a collection of popular movies was queried to make analyses focusing on IMDb ratings. 
+
+## Results
+
+
+Currently the trend for movie profitabilty is bit more varied than it was a decade ago, there still appears to be year over year growth and now is a good time for Microsoft to enter the field.
+![film_Profitability](./images/film_Profitability.png)
+High budget films are preffered over low budget films in terms of financial success.
+![low_vs_high](./images/low_vs_high.png)
+Early summer and winter holidays are the best times to release a new film.
+![high_seasons](./images/high_seasons.png)
+Drama, Action, and Adventure are the most popular genre elements. 
+![top_genres](./images/top_genres.png)
+
+
+## Conclusions
+Overall, it is riskier to get into the movie studio buisness than it was at the beginning of the 2010s. That being said, there is still a good financial incentive for Microsoft to enter the field right now, keeping in mind the following recommendations: 
+
+* Focus on large budget films and be prepared to spend more than $20,000,000 per film. Although lower budget movies can have impressive ROI returns, they are more likely to fail than larger budget movies. 
+* Plan to release movies towards the beginning of summer, or during the winter holidays. Avoid releasing movies at the beginning of the year or during the fall. 
+* Focus on creating a film with elements of Drama, Action, and Adventure as they tend to be recieved well by the public as compared to other genres. 
+
+
+
+### Next steps
+
+
+Include more consumer side analysis. Who is the major target audience? 
+
+Gain more insight into lower budget movies and make further recommendations if high budget films are unnatainable. 
+
+Including analysis of the rotten tomato dataset could reveal some insights about how critical acclaim affects the financial success of movies.
+
+Including analysis of the TMDb Dataset with focus on the unique feature of 'popularity' can be used to support some of my findings and to explore the data even further.
+
+By using the OMDb API, it would be possible to gain insight on how the success of a movie relates to their associated posters, but it was beyond the scope of this project.
+
+
+## For More Information
+
+See the full analysis in the [Exploratory Notebook](./Data_Exploration_and_Processing.ipynb) and [Analysis Notebook](./Analysis_and_Visualizations.ipynb) or review this [presentation](........).
+
+For additional info, contact Dylan Dey at [ddey2985@gmail.com](mailto:ddey295@gmail.com)
+
+
+## Repository Structure
+
+```
+├── data
+├── images
+├── README.md
+├── 
+└── 
+```
