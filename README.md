@@ -2,6 +2,17 @@
 
 **Author**: [Dylan Dey](mailto:ddey2985@gmail.com)
 
+## Repository Structure 
+
+```
+├── data (raw zipped data and cleaned/processed data saved in seperate files)
+├── images (png files for all images related to this project)
+├── README.md (This ReadMe focuses heavily on the contents of the project)
+├── Dataset_Tables.md  (table created to explore the contents of the data)
+└── Data_Exploration_and_Processing.ipynb (first notebook for important and processing unkown data)
+├── Analysis_and_Visualizations.ipynb (second notebook for visualizing the data and results)
+└── moviePresentation.pd (final presentation of findings)
+
 ## Overview
 
 This notebook imports the processed data from the Data Exploration notebook in order to analyze current movie trends on behalf of Microsoft's new movie studio. By putting an emphasis on the median ROI% value of movie data from a number of movie database websites, as well as by creating a list of the most popular movies, evaluation of financial performance and the risk involved was evaluted and recommendations based on these findings were made. A focus on large budget movies with particular genre elements released at the appropriate time of the year will ensure the best chance of success at the box office for Microsoft.
@@ -196,12 +207,14 @@ See the full analysis in the [Exploratory Notebook](./Data_Exploration_and_Proce
 For additional info, contact Dylan Dey at [ddey2985@gmail.com](mailto:ddey295@gmail.com)
 
 
-## Repository Structure
+## Repository Structure (reminder)
 
 ```
 ├── data
 ├── images
 ├── README.md
-├── 
-└── 
+├── Dataset_Tables.md
+└── Data_Exploration_and_Processing.ipynb
+├── Analysis_and_Visualizations.ipynb
+└── moviePresentation.pdf
 ```
