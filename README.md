@@ -3,7 +3,6 @@
 **Author**: [Dylan Dey](mailto:ddey2985@gmail.com)
 
 ## Repository Structure 
-
 ```
 ├── data (raw zipped data and cleaned/processed data saved in seperate files)
 ├── images (png files for all images related to this project)
@@ -12,6 +11,7 @@
 └── Data_Exploration_and_Processing.ipynb (first notebook for important and processing unkown data)
 ├── Analysis_and_Visualizations.ipynb (second notebook for visualizing the data and results)
 └── moviePresentation.pd (final presentation of findings)
+```
 
 ## Overview
 
